@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div>
+      <h1></h1>
+      <h1></h1>
+    </div>
+  </body>
+  <script>
+
+    class Foo{
+      constructor(selector, text) {
+        this.selector = selector;
+        this.text = text;
+      }
+      render(){
+        document.querySelector(this.selector).innerHTML = this.text;
+        }
+    }
+    const foo1 = new Foo('h1:first-child', 'hello');
+    const foo2 = new Foo('h1:last-child', 'world');
+    console.log(foo2.render === foo1.render); // console result: true
+
+    foo1.render();
+    foo2.render();
+
+  </script>
+</html>
