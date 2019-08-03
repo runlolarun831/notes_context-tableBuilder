@@ -12,16 +12,11 @@
     function Foo(selector, text) {
       this.selector = selector;
       this.text = text;
-      // this.render = function(){ //changed at 3:39 of context5 video
-      //     document.querySelector(this.selector).innerHTML = this.text;
-      // }
-      this.render = ()=> {  //function keyword removed &changed to arrow funct
-          document.querySelector(this.selector).innerHTML = this.text;
-      }
-      //^^^^^?????changing this.render to => function binds this.render() to Foo????
-      //^^^^^^both versions of render removed upon creation of prototype^^^^^^^
     }
 
+    Foo.prototype.render = function() {
+      document.querySelector(this.selector).innerHTML = this.text;
+    }
 
 /* ^^^^^^^once we make Foo funct, we no longer need to use fooFactory ^^^^^^*/
     const fooFactory = (selector, text)=> {
