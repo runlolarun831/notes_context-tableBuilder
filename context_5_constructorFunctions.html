@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div>
+      <h1></h1>
+      <h1></h1>
+    </div>
+  </body>
+  <script>
+    function Foo(selector, text) {
+      this.selector = selector;
+      this.text = text;
+      // this.render = function(){ //changed at 3:39 of context5 video
+      //     document.querySelector(this.selector).innerHTML = this.text;
+      // }
+      this.render = ()=> {  //function keyword removed &changed to arrow funct
+          document.querySelector(this.selector).innerHTML = this.text;
+      }
+      //^^^^^?????changing this.render to => function binds this.render() to Foo????
+      //^^^^^^both versions of render removed upon creation of prototype^^^^^^^
+    }
+
+
+/* ^^^^^^^once we make Foo funct, we no longer need to use fooFactory ^^^^^^*/
+    const fooFactory = (selector, text)=> {
+      return {
+        selector,
+        text,
+        render: function() {
+          document.querySelector(this.selector).innerHTML = this.text;
+        }
+      }
+    };
+
+/* when we use the keyword "new" with a function, that function becomes a constructor function
+that implicitely returns an object that can be accessed by "this." */
+    const foo1 = new Foo('h1:first-child', 'hello');
+    const foo2 = new Foo('h1:last-child', 'world');
+
+    // we can find out if foo1 came from constructor func. by instanceof operator
+    console.log(foo1 instanceof Foo); //<--instanceof  console result: true
+
+    // !!!!important to note that Foo1 and Foo2 create 2 different render functions
+    console.log(foo2.render === foo1.render); // console result: false
+
+    foo1.render();
+    foo2.render();
+
+  </script>
+</html>

@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div>
+      <h1></h1>
+      <h1></h1>
+    </div>
+  </body>
+  <script>
+    const fooFactory = (selector, text)=> {
+      return {
+        selector,
+        text,
+        render: function() {
+          document.querySelector(this.selector).innerHTML = this.text;
+        }
+      }
+    };
+    const foo1 = fooFactory('h1:first-child', 'hello');
+    const foo2 = fooFactory('h1:last-child', 'world');
+    foo1.render();
+    foo2.render();
+
+  </script>
+</html>

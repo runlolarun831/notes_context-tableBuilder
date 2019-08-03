@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+  </body>
+  <script>
+
+    // const foo = {
+    //   bar: 'bazz',
+    //   quq: function() {
+    //     console.log(this);
+    //   }
+    // };
+    // const q = foo.quq; // pull (reference) the quq funct just as a naked funct
+    // q();
+    // // // console result:
+    // // // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+
+
+// /******We want it to be bound to foo */
+/**********FAT ARROW FUNCTIONS CANNOT BE BOUND!***********************/
+/*****IN ORDER TO BIND FUNCTION U NEED TO USE'FUNCTION' KEYWORD!******/
+    const foo = {
+        bar: 'bazz',
+        quq: function() {
+          console.log(this);
+        }
+    };
+    const q = foo.quq.bind(foo); //  every funct has a 'bind' method
+    q();                         //bind funct to object
+//     // console result:
+//      {bar: "bazz", quq: ƒ}
+
+
+    </script>
+</html>

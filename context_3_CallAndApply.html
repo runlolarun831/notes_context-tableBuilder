@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+  </body>
+  <script>
+/**************** .apply method *********************************/
+
+    // const foo = {
+    //   bar: 'bazz',
+    //   quq: function() {
+    //     console.log(this);
+    //   }
+    // };
+
+    // const x = {};
+    // const q = foo.quq;
+    // q.apply(foo);  ///1st parameter wants to know the context
+     // console result:
+    // {bar: "bazz", quq: ƒ}
+
+/****************** .call method *******************************/
+
+    // const foo = {
+    //     bar: 'bazz',
+    //     quq: function() {
+    //       console.log(this);
+    //     }
+    // };
+    // const x = {};
+    // const q = foo.quq;
+    // q.call(foo);
+    // console result:
+    // {bar: "bazz", quq: ƒ}
+
+////so far both .call and .apply have the same results/////
+/***** differences can be seen when we use parameters in  .methods *********/
+
+// const foo = {
+//         bar: 'bazz',
+//         quq: function(x, y) { //w 2 values
+//           console.log(x + y, this);
+//         }
+//     };
+//     const x = {};
+//     const q = foo.quq;
+//     q.call(foo, 1, 2); //1st param: context, 2nd: whatever args you want to pass
+//     // console result:
+//     // 3 {bar: "bazz", quq: ƒ}
+
+/*************************************************/
+
+const foo = {
+        bar: 'bazz',
+        quq: function(x, y) { //w 2 values
+          console.log(x + y, this);
+        }
+    };
+    const x = {};
+    const q = foo.quq;
+    q.apply(foo, [1, 2]); /////apply take " 'A'for array" its params the values in an array
+    // console result:
+    // 3 {bar: "bazz", quq: ƒ}
+
+
+    </script>
+</html>

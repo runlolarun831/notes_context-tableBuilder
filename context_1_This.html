@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <button>Click Me</button>
+  </body>
+  <script>
+    /*what we learned: we have 'this' for other things beside the window object,
+    they can be in eventListeners for buttons or when we have an object that calls itself */
+    /****the context of the this keyword is based on the object in which it’s called.*****/
+
+
+    // console.log(this);
+    // // console result: the Window object
+    // // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+
+/********************************************************/
+
+    // console.log(this === window);
+    // // console result:
+    // //true
+
+/********************************************************/
+
+    // function foo() {
+    //   console.log(this);
+    // }
+    // foo();
+    // // // console result:
+    // //Window
+
+/********************************************************/
+
+    // /*added <button> to <body>*/
+    // const button = document.querySelector('button');
+    // button.addEventListener('click', (ev)=> {
+    //   console.log(this);
+    // });
+    // // console result:
+    // // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+
+/********************************************************/
+
+   // /*changed fat arrow func symbol to regular form*/
+   //  which allows "this" to be bound
+   //you don't call this function...it gets called for you
+   //you can access the button
+    // const button = document.querySelector('button');
+    // button.addEventListener('click', function(ev){
+    //   console.log(this);
+    //   //console.log(this === ev.target);// could also the button this way
+    // });
+// // console result:
+ //     <button>Click Me</button>
+
+/********************************************************/
+
+    // const foo = {
+    //   bar: 'bazz',
+    //   quq: function() {  ////<---binds 'this' to function
+    //     console.log(this);
+    //   }
+    // };
+    // foo.quq();
+// // console result:
+// {bar: "bazz", quq: ƒ}   it is bound to the object
+
+/********************************************************/
+
+// const foo = {
+//       bar: 'bazz',
+//       quq: () => {
+//         console.log(this);
+//       }
+//     };
+//     foo.quq();
+//  // console result:
+//  // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+
+/********************************************************/
+const foo = {
+      bar: 'bazz',
+      quq: () => {
+        console.log(this);
+      }
+    };
+    const q = foo.quq; // pull (reference) the quq funct just as a naked funct
+    q();
+    // console result:
+    // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+
+</script>
+</html>
