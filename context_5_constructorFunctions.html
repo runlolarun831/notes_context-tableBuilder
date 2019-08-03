@@ -9,11 +9,12 @@
     </div>
   </body>
   <script>
-    function Foo(selector, text) {
-      this.selector = selector;
+    function Foo(selector, text) {   // Foo properties are separated from the Foo functions
+      this.selector = selector;      //** so these properties represent the "state" of Foo function
       this.text = text;
     }
 
+//** now render  is a Foo prototype  AKA  a method of Foo function
     Foo.prototype.render = function() {
       document.querySelector(this.selector).innerHTML = this.text;
     }
@@ -37,8 +38,8 @@ that implicitely returns an object that can be accessed by "this." */
     // we can find out if foo1 came from constructor func. by instanceof operator
     console.log(foo1 instanceof Foo); //<--instanceof  console result: true
 
-    // !!!!important to note that Foo1 and Foo2 create 2 different render functions
-    console.log(foo2.render === foo1.render); // console result: false
+    // !!!!important to note that NOW Foo1 and Foo2 create THE SAME RENDER FUNCTION
+    console.log(foo2.render === foo1.render); // console result: true
 
     foo1.render();
     foo2.render();
